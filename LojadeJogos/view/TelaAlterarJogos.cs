@@ -24,27 +24,29 @@ namespace LojadeJogos.view
 
         private void btnconfirmar_Click(object sender, EventArgs e)
         {
-            jogos.Nome = Convert.ToString(txtboxaltnome.Text);
-
-            txtboxaltnome.Text = jogos.Nome.ToString();
-            txtboxaltgenero.Text = jogos.Genero;
-            txtboxaltplataforma.Text = jogos.Plataforma;
+            jogos.Codigo = Convert.ToInt32(textBoxcodigo.Text);
+            jogos.Nome = txtboxaltnome.Text;
+            jogos.Genero = txtboxaltgenero.Text;
+            jogos.Plataforma = txtboxaltplataforma.Text;
 
             gerenciamentodejogos gj = new gerenciamentodejogos();
-            gj.pesquisarjogos();
+            gj.alterarjogos();
+            
 
         }
 
         private void btnpesquisar_Click(object sender, EventArgs e)
         {
-            jogos.Nome = Convert.ToString(txtboxaltnome.Text);
+            jogos.Codigo = Convert.ToInt32(textBox3.Text);
 
-            txtboxaltnome.Text = jogos.Nome.ToString();
+            gerenciamentodejogos mpecas = new gerenciamentodejogos();
+            mpecas.pesquisarjogos();
+
+            
+            txtboxaltnome.Text = jogos.Nome;
             txtboxaltgenero.Text = jogos.Genero;
             txtboxaltplataforma.Text = jogos.Plataforma;
 
-            gerenciamentodejogos gj = new gerenciamentodejogos();
-            gj.pesquisarjogos();
         }
     }
 }

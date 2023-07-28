@@ -36,11 +36,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textboxcod = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnbuscar
             // 
-            this.btnbuscar.Location = new System.Drawing.Point(553, 201);
+            this.btnbuscar.Location = new System.Drawing.Point(567, 150);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(98, 31);
             this.btnbuscar.TabIndex = 17;
@@ -64,7 +66,7 @@
             // 
             // txtboxpesqnome
             // 
-            this.txtboxpesqnome.Location = new System.Drawing.Point(312, 204);
+            this.txtboxpesqnome.Location = new System.Drawing.Point(312, 206);
             this.txtboxpesqnome.Name = "txtboxpesqnome";
             this.txtboxpesqnome.Size = new System.Drawing.Size(190, 23);
             this.txtboxpesqnome.TabIndex = 14;
@@ -93,7 +95,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(277, 95);
+            this.label4.Location = new System.Drawing.Point(290, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(225, 37);
             this.label4.TabIndex = 11;
@@ -103,11 +105,29 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(122, 195);
+            this.label1.Location = new System.Drawing.Point(122, 204);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(170, 32);
             this.label1.TabIndex = 10;
             this.label1.Text = "Titulo do Jogo";
+            // 
+            // textboxcod
+            // 
+            this.textboxcod.Location = new System.Drawing.Point(312, 155);
+            this.textboxcod.Name = "textboxcod";
+            this.textboxcod.Size = new System.Drawing.Size(190, 23);
+            this.textboxcod.TabIndex = 19;
+            this.textboxcod.TextChanged += new System.EventHandler(this.textboxcod_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(122, 146);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(180, 32);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Digite o codigo";
             // 
             // TelaDePesquisa
             // 
@@ -115,6 +135,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Goldenrod;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textboxcod);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.txtboxpesqplataforma);
             this.Controls.Add(this.txtboxpesqgenero);
@@ -140,5 +162,7 @@
         private Label label2;
         private Label label4;
         private Label label1;
+        private TextBox textboxcod;
+        private Label label5;
     }
 }

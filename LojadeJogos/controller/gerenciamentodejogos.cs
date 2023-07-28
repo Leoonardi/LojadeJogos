@@ -1,6 +1,7 @@
 ﻿using LojadeJogos.model;
 using LojadeJogos.view;
 using Microsoft.Data.SqlClient;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace LojadeJogos.controller
         public void jogoscadas()
         {
             SqlConnection cn = new SqlConnection(conexao.conectar());
-            SqlCommand gdj = new SqlCommand("pcadastrarjogos", cn);
+            SqlCommand gdj = new SqlCommand("pcadastrarJogos", cn);
             gdj.CommandType = CommandType.StoredProcedure;
 
             try
@@ -32,7 +33,7 @@ namespace LojadeJogos.controller
                 gdj.Parameters.AddWithValue("genero", jogos.Genero);
                 gdj.Parameters.AddWithValue("plataforma", jogos.Plataforma);
 
-                SqlParameter jj = gdj.Parameters.Add("idjogos", SqlDbType.Text);
+                SqlParameter jj = gdj.Parameters.Add("Idjogos", SqlDbType.Int);
                 jj.Direction = ParameterDirection.Output;
                 cn.Open();
                 gdj.ExecuteNonQuery();
@@ -71,12 +72,14 @@ namespace LojadeJogos.controller
 
             try
             {
-                gdj.Parameters.AddWithValue("idjogos", jogos.Nome);
+                gdj.Parameters.AddWithValue("idjogos", jogos.Codigo);
                 cn.Open();
                 gdj.ExecuteNonQuery();
 
                 var resposta = MessageBox.Show("Jogo deletado com sucesso!,deseja apagar outro jogo? ", "Deletar dados",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+               
 
                 if (resposta == DialogResult.Yes)
                 {
@@ -97,15 +100,6 @@ namespace LojadeJogos.controller
 
                 throw;
             }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -141,25 +135,62 @@ namespace LojadeJogos.controller
 
         }
 
-        public static BindingSource pesquisarjogos()
+        public void pesquisarjogos()
         {
             SqlConnection cn = new SqlConnection(conexao.conectar());
             SqlCommand gdj = new SqlCommand("pBuscaJogos", cn);
             gdj.CommandType = CommandType.StoredProcedure;
-            gdj.Parameters.AddWithValue("idjogos", jogos.Nome);
+
+            try
+            {
+                gdj.Parameters.AddWithValue("@idjogos", jogos.Codigo);
+                cn.Open();
+
+                var registro = gdj.ExecuteReader();
+
+                if (registro.Read())
+                {
+                    jogos.Codigo = Convert.ToInt32(registro["idjogos"]);
+                    jogos.Nome = (string)registro["nome"];
+                    jogos.Genero = (string)registro["genero"];
+                    jogos.Plataforma = (string)registro["plataforma"];
+
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
+        public static BindingSource PesquisarNome()
+        {
+            SqlConnection cn = new SqlConnection(conexao.conectar());
+            SqlCommand gdj = new SqlCommand("pBuscaJogosnome", cn);
+            gdj.CommandType = CommandType.StoredProcedure;
+            gdj.Parameters.AddWithValue("@nome", jogos.Nome);
             cn.Open();
             gdj.ExecuteNonQuery();
 
 
 
-            return;
-        }
-        
+            SqlDataAdapter da = new SqlDataAdapter(gdj);
+            DataTable dt = new DataTable();
 
-        
-        
+            da.Fill(dt);
 
+            BindingSource dados = new BindingSource();
+            dados.DataSource = dt;
+
+            return dados;
         }
+
+    }
 
 
     }

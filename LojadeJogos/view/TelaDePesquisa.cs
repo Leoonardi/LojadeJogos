@@ -22,17 +22,21 @@ namespace LojadeJogos.view
         private void btnbuscar_Click(object sender, EventArgs e)
         {
 
-            jogos.Nome = Convert.ToString(txtboxpesqnome.Text);
+            jogos.Codigo = Convert.ToInt32(textboxcod.Text);
 
-            gerenciamentodejogos gj = new gerenciamentodejogos();
-            gj.pesquisarjogos();
+            gerenciamentodejogos mpecas = new gerenciamentodejogos();
+            mpecas.pesquisarjogos();
 
-            txtboxpesqnome.Text = jogos.Nome.ToString();
+            textboxcod.Text = jogos.Codigo.ToString();
+            txtboxpesqnome.Text = jogos.Nome;
             txtboxpesqgenero.Text = jogos.Genero;
             txtboxpesqplataforma.Text = jogos.Plataforma;
+        }
 
+        private void textboxcod_TextChanged(object sender, EventArgs e)
+        {
 
-           
         }
     }
+    
 }

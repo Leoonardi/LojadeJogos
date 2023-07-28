@@ -61,6 +61,7 @@
             this.gerenciamentoDeJogosToolStripMenuItem.Size = new System.Drawing.Size(241, 29);
             this.gerenciamentoDeJogosToolStripMenuItem.Text = "Gerenciamento de jogos";
             this.gerenciamentoDeJogosToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.gerenciamentoDeJogosToolStripMenuItem.Click += new System.EventHandler(this.gerenciamentoDeJogosToolStripMenuItem_Click);
             // 
             // cadastrarJogosToolStripMenuItem
             // 

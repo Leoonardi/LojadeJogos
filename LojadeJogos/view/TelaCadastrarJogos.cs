@@ -28,7 +28,7 @@ namespace LojadeJogos.view
         {
             jogos.Nome = txtboxcadasnome.Text;
             jogos.Genero = txtboxcadasgenero.Text;
-            jogos.Genero = txtboxcadasplataforma.Text;
+            jogos.Plataforma = txtboxcadasplataforma.Text;
 
             gerenciamentodejogos gj = new gerenciamentodejogos();
 

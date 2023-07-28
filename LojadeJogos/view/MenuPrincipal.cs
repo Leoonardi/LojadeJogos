@@ -49,5 +49,10 @@ namespace LojadeJogos.view
         {
             Application.Exit();
         }
+
+        private void gerenciamentoDeJogosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
